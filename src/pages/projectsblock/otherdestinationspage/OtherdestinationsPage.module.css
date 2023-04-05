@@ -1,0 +1,16 @@
+.title {
+    display: block;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-normal);
+    color: var(--dark-blue);
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: var(--fs-sm);
+    }
+    .subTitle {
+        font-size: var(--fs-sm);
+    }
+}

@@ -1,0 +1,116 @@
+.newsContainer {
+    display: grid;
+    grid-template-columns: minmax(320px, 1000px);
+    justify-content: center;
+    border-right: 5px solid var(--dark-green);
+    border-left: 5px solid var(--dark-green);
+    margin-top: 30px;
+    padding: 30px 10px;
+}
+
+.newsTextContainer {
+    align-items: center;
+}
+
+.newsTitle {
+    display: block;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-normal);
+    color: #666666;
+    text-align: center;
+}
+
+.newsImages {
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    max-height: 450px;
+    visibility: visible;
+    overflow: hidden;
+    margin: 30px 0px 30px 130px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+
+.newsImages > img {
+    width: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+.devider {
+    margin: 30px 0;
+    border: 2px dotted var(--dark-green);
+    border-radius: 50%;
+}
+
+.newsText {
+    margin: 10px;
+}
+
+.authorsContainer {
+    padding: 20px 10px 0px;
+}
+
+.newsAuthor {
+    display: grid;
+    justify-content: center;
+    font-style: italic;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.activePageBtn {
+    background-color: var(--red) !important;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pageBtn {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 38px;
+    height: 28px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: var(--fw-bold);
+    background-color: var(--dark-green);
+    border: 2px solid var(--white);
+    margin-right: 3px;
+    cursor: pointer;
+    box-shadow:  var(--shadow);
+    user-select: none;
+}
+
+.pageBtn:hover {
+    background-color: var(--orange);
+}
+
+.rotate {
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 600px) {
+    .newsImages {
+        max-height: 250px;
+        margin: 30px 10px 30px 10px
+    }
+    .newsTitle {
+        font-size: var(--fs-sm);
+    }
+    .newsContainer {
+        border-right: 0px solid var(--dark-green);
+        border-left: 0px solid var(--dark-green);
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1040px) {
+    .newsImages {
+        margin: 30px 10px 30px 30px;
+    }
+}

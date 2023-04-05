@@ -1,0 +1,17 @@
+export { HomePage } from './homepage/HomePage'
+export { NewsPage } from './newspage/NewsPage'
+export { UsefulPage } from './usefulpage/UsefulPage'
+
+export { AboutUsPage } from './aboutblock/aboutuspage/AboutUsPage'
+export { AssetPage } from './aboutblock/assetpage/AssetPage'
+export { ContactsPage } from './aboutblock/contactspage/ContactsPage'
+export { EventsPage } from './aboutblock/eventspage/EventsPage'
+
+export { AiremissionsPage } from './projectsblock/airemissionspage/AiremissionsPage'
+export { EcodesignPage } from './projectsblock/ecodesignpage/EcodesignPage'
+export { EcopoliticPage } from './projectsblock/ecopoliticpage/EcopoliticPage'
+export { EnergysavingPage } from './projectsblock/energysavingpage/EnergysavingPage'
+export { InitiativesPage } from './projectsblock/initiativespage/InitiativesPage'
+export { OtherdestinationsPage } from './projectsblock/otherdestinationspage/OtherdestinationsPage'
+export { RecyclingPage } from './projectsblock/recyclingpage/RecyclingPage'
+export { WatersupplyPage } from './projectsblock/watersupplypage/WatersupplyPage'

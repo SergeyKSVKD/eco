@@ -1,0 +1,48 @@
+.modalSent {
+    position: absolute;
+    top: 530px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 7px;
+    width: 320px;
+    border-radius: 7px;
+    border: 2px solid var(--white);
+    box-shadow: rgb(0 0 0 / 40%) 3px 3px 3px 3px;
+    visibility: hidden;
+    opacity: 0; 
+    transform: translateY(-320px);
+    transition: 1s;
+    z-index: 100;
+}
+
+.successful {
+    background-color: var(--dark-green);
+}
+
+.unsuccessful {
+    background-color: var(--red);
+}
+
+.warning {
+    background-color: #ff972f;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1; 
+    transform: translate(0px)
+}
+
+.text {
+    text-align: center;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    padding: 2px 10px;
+    line-height: 1.5;
+    color: var(--white);
+}
+
+.icon {
+    padding: 4px;
+}
