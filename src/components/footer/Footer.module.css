@@ -35,6 +35,12 @@
     font-size: var(--fs-sm);
 }
 
+.contactsWrapper {
+    display: grid;
+    gap: 5px;
+    align-items: center;
+}
+
 .contacts {
     display: grid;
     grid-template-columns: 32px auto;
@@ -59,10 +65,10 @@
         text-align: center;
     }
     .helloWrapper{
-        justify-content: center;
+        padding-left: 30px;
     }
     .contacts {
-        padding: 0px 55px;
+        padding-left: 30px;
         font-size: 12px;
         align-items: center;
     }

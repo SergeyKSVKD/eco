@@ -19,4 +19,8 @@
     .title {
         font-size: var(--fs-md);
     }
+    .subTitle2 {
+        font-size: var(--fs-sm);
+        font-weight: var(--fw-normal);
+    }
 }

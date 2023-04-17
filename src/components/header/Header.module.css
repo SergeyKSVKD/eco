@@ -21,6 +21,14 @@
     visibility: visible;
 }
 
+.ecoLogo {
+    width: 110%;
+    padding: 5px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
 a > img {
     width: 100%;
     object-fit: cover;

@@ -27,20 +27,21 @@ export const Navbar = () => {
         about: false,
         projects: false,
     }
+
     const subTitlesAbout = [
         { title: 'О нас', route: '/aboutus' },
-        { title: 'События', route: '/events' },
+        // { title: 'События', route: '/events' },
         { title: 'Как связаться', route: '/contacts' },
         { title: 'Актив экоклуба', route: '/asset' },
     ]
     const subTitlesProject = [
         { title: 'Экологическая политика', route: '/ecopolitic' },
-        { title: 'Рециклинг', route: '/recycling' },
-        { title: 'Водоснабжение', route: '/watersupply' },
+        // { title: 'Рециклинг', route: '/recycling' },
+        // { title: 'Водоснабжение', route: '/watersupply' },
         { title: 'Выбросы в атмосферу', route: '/airemissions' },
-        { title: 'Энергосбережение', route: '/energysaving' },
-        { title: 'Экодизайн', route: '/ecodesign' },
-        { title: 'Другие направления', route: '/otherdestinations' },
+        // { title: 'Энергосбережение', route: '/energysaving' },
+        // { title: 'Экодизайн', route: '/ecodesign' },
+        // { title: 'Другие направления', route: '/otherdestinations' },
         { title: 'Инициативы', route: '/initiatives' },
     ]
 
@@ -58,31 +59,38 @@ export const Navbar = () => {
     }
 
     function backToPreviousActiveLink() {
+        const about = []
+        const project = []
         if (pathname === '/') {
             return setActiveMenu({
                 ...initial,
                 home: true,
             })
         }
-        if (pathname === '/aboutus' || pathname === '/contacts' || pathname === '/events' || pathname === '/asset') {
+        subTitlesAbout.forEach((el) => {
+            about.push(el.route)
+        })
+        if (about.includes(pathname)) {
             return setActiveMenu({
                 ...initial,
                 about: true,
             })
         }
-        if (pathname === '/ecopolitic' || pathname === '/recycling' || pathname === '/watersupply' || pathname === '/airemissions' ||
-            pathname === '/energysaving' || pathname === '/ecodesign' || pathname === '/otherdestinations' || pathname === '/initiatives'
-        ) {
-            return setActiveMenu({
-                ...initial,
-                projects: true,
-            })
-        }
+        subTitlesProject.forEach((el) => {
+            project.push(el.route)
+        })
+        if (project.includes(pathname)) {
+                return setActiveMenu({
+                    ...initial,
+                    projects: true,
+                })
+            }
         setActiveMenu({
             ...initial,
             [pathname.slice(1, pathname.length)]: true,
         })
     }
+
     const { pathname } = useLocation()
 
     useEffect(() => {
@@ -104,20 +112,22 @@ export const Navbar = () => {
                 useful: true,
             })
         }
-        if (pathname === '/aboutus' || pathname === '/contacts' || pathname === '/events' || pathname === '/asset') {
-            return setActiveMenu({
-                ...initial,
-                about: true,
-            })
-        }
-        if (pathname === '/ecopolitic' || pathname === '/recycling' || pathname === '/watersupply' || pathname === '/airemissions' ||
-            pathname === '/energysaving' || pathname === '/ecodesign' || pathname === '/otherdestinations' || pathname === '/initiatives'
-        ) {
-            return setActiveMenu({
-                ...initial,
-                projects: true,
-            })
-        }
+        subTitlesAbout.forEach((el) => {
+            if (pathname === el.route) {
+                return setActiveMenu({
+                    ...initial,
+                    about: true,
+                })
+            }
+        })
+        subTitlesProject.forEach((el) => {
+            if (pathname === el.route) {
+                return setActiveMenu({
+                    ...initial,
+                    projects: true,
+                })
+            }
+        })
     }, [pathname])
 
     return (

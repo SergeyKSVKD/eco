@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 import { ReactComponent as EmailIcon } from './assets/email.svg'
 import { ReactComponent as LogoIcon } from './assets/logo.svg'
 import { ReactComponent as UniversityIcon } from './assets/university.svg'
+import { ReactComponent as PhoneIcon } from './assets/phone.svg'
 import { Link } from 'react-router-dom'
 
 import styles from './Footer.module.css'
@@ -24,7 +25,9 @@ export const Footer = () => {
                         <a className={styles.mailLink} href='mailto:ecoclub@samgtu.ru'>
                             ecoclub@samgtu.ru</a>
                     </span>
-                    <span className={styles.contacts}><UniversityIcon /> 443100 Россия, г.Самара, ул. Первомайская, д. 18</span>
+                    <span className={styles.contacts}><UniversityIcon /> 443100 Россия, г.Самара, ул. Первомайская, д. 18, кафедра ХТПЭ</span>
+                    <span className={styles.contacts}><PhoneIcon /> <a className={styles.mailLink} href='tel:8-927-686-76-91'>
+                    Копнина Алина Юрьевна, тел. 8-(927)-686-76-91</a></span>
                 </div>
             </div>
         </div>

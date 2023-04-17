@@ -58,15 +58,9 @@ export const HomePage = () => {
     const motionScaleVariants = {
         hidden: {
             scale: 0.95,
-            // rotate: 90,
-            // x: 200,
-            // opacity: 0,
         },
         visible: {
             scale: 1,
-            // rotate: 0,
-            // x: 0,
-            // opacity: 1,
         },
     }
 
@@ -101,7 +95,7 @@ export const HomePage = () => {
                 <div>
                     <span className={styles.subTitle}>"Живая вода"</span>
                     <p className={styles.borderLeft}>В журнале "Живая вода" был опубликован очерк об истории и развитии экологического клуба СамГТУ. Профессор СамГТУ, сопредседатель экоклуба, координатор групп "Ноль отходов", "Экологический аудит", Гладышев Николай Григорьевич проводит экскурс в историю зарождения экоклуба, зарождения студенческого волонтерского движения, которое, безусловно, преобразило отношение сотрудников и учащихся СамГТУ к окружающей среде.</p>
-                    <p className={styles.borderLeft}>Ознакомиться со статьей можно в электронной версии журнала "Живая вода"  <a href="https://priroda.samregion.ru/external/priroda/files/c_4661/ZHivaya_voda_2-17_RGB.pdf" target='_blank'>по ссылке (страница 13)</a>.</p>
+                    <p className={styles.borderLeft}>Ознакомиться с текстом статьи можно <a href="https://vk.com/wall-151940893_3568" target='_blank'>по ссылке</a>.</p>
                 </div>
             </motion.div>
 

@@ -15,7 +15,7 @@ export const Header = () => {
                     {useResize().isScreenSm ?
                         <div className={styles.images}>
                             <a href="https://ecoclub.samgtu.ru" target="_blanc">
-                                <img src={require('./assets/eco.webp')} alt="eco-samgtu" />
+                                <img  className={styles.ecoLogo} src={require('./assets/ecoclub.png')} alt="eco-samgtu" />
                             </a>
                         </div> : null}
                 </div>
