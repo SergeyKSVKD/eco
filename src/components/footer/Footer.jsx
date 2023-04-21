@@ -27,7 +27,7 @@ export const Footer = () => {
                     </span>
                     <span className={styles.contacts}><UniversityIcon /> 443100 Россия, г.Самара, ул. Первомайская, д. 18, кафедра ХТПЭ</span>
                     <span className={styles.contacts}><PhoneIcon /> <a className={styles.mailLink} href='tel:8-927-686-76-91'>
-                    Копнина Алина Юрьевна, тел. 8-(927)-686-76-91</a></span>
+                        тел. 8 (927) 686-76-91</a></span>
                 </div>
             </div>
         </div>

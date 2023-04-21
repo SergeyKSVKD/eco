@@ -1,4 +1,4 @@
-import styles from './Modal.module.css'
+import styles from './Modal.module.scss'
 import cn from 'classnames'
 import { ReactComponent as OKIcon } from './assets/OK.svg'
 import { ReactComponent as WarningIcon } from './assets/Warning.svg'
@@ -8,7 +8,8 @@ const Modal = ({ message, isModalActive, modal = '', successful = 'true' }) => {
 
     return (<>
         <div className={cn({
-            [styles.modalSent]: modal === 'sent',
+            [styles.modal__sent]: modal === 'sent',
+            [styles.modal__copy]: modal === 'copy',
             [styles.active]: isModalActive,
             [styles.unsuccessful]: successful === 'false',
             [styles.successful]: successful === 'true',

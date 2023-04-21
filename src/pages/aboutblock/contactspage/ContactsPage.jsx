@@ -293,7 +293,7 @@ export const ContactsPage = () => {
                             }>Отправить</button>
                         :
                         <button
-                            className={styles.unsubmit}>Отправить</button>}
+                            className={styles.unsubmit}>Вступить</button>}
                     <Modal message={modal.message} isModalActive={modal.isModalActive} modal='sent' successful={modal.status} />
                 </fieldset>
             </form>

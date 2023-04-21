@@ -139,12 +139,12 @@ a.menu.active:hover {
         height: 60px;
     }
     .aboutSubMenu {
-        top: 120px;
+        top: 200px;
         right: 140px;
         left: auto;
     }
     .projectsSubMenu {
-        top: 20px;
+        top: 215px;
         right: 140px;
         left: auto;
     }

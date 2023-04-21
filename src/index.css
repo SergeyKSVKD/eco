@@ -25,8 +25,10 @@ body {
   margin: 0;
   font-family: var(--family);
   font-size: var(--fs-sm);
+  line-height: var(--lh);
   background-color: var(--light-green);
   color: #494e53;
+  /* color: #2e2d2c; */
 }
 
 :root {
@@ -38,6 +40,7 @@ body {
   --fw-light: 400;
   --fw-normal: 600;
   --fw-bold: 700;
+  --lh: 24px;
 
   /* color palette */
   --light-green: #dffcde;
@@ -66,5 +69,13 @@ body {
   --fs-sm: 12px;
   --fs-md: 18px;
   --fs-lg: 26px;
+  --lh: 18px;
   }
 }
+/* @media (min-width: 1000px) {
+  :root {
+  --fs-sm: 16px;
+  --fs-md: 22px;
+  --fs-lg: 30px;
+  }
+} */

@@ -123,7 +123,7 @@ ul {
 .joinUsButton {
     display: grid;
     grid-template-columns: 32px auto;
-    max-width: 340px;
+    max-width: 380px;
     font-size: var(--fs-md);
     font-weight: var(--fw-normal);
     margin-bottom: 10px;

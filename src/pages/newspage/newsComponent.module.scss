@@ -1,0 +1,203 @@
+.news {
+    display: grid;
+    grid-template-columns: minmax(320px, 1000px);
+    justify-content: center;
+    border-right: 5px solid var(--dark-green);
+    border-left: 5px solid var(--dark-green);
+    margin-top: 30px;
+    padding: 20px 10px;
+}
+
+.news__text__container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.news__title {
+    display: block;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-normal);
+    line-height: 40px;
+    color: #666666;
+    text-align: center;
+}
+
+.news__images {
+    max-width: 480px;
+    height: 360px;
+    overflow: hidden;
+    margin: 20px 0px;
+    border-radius: 5px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+        }
+}
+
+.news__text {
+    padding: 0px 40px;
+
+}
+
+.p__text {
+    margin: 4px 20px;
+}
+
+.centered {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.authors__container {
+    max-width: 700px;
+    padding: 0px 10px 30px;
+}
+
+.news__author {
+    display: grid;
+    justify-content: center;
+    font-style: italic;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px 10px;
+}
+
+.news__button__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    width: 330px;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    padding: 20px 20px;
+}
+
+.news__button {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    width: 140px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #666666;
+    color: white;
+    font-weight: var(--fw-bolder);
+    padding: 6px 20px;
+    border-radius: 4px;
+        &:hover {
+            cursor: pointer;
+            background-color: var(--orange);
+        }
+}
+
+.icon__rotate__180 {
+    transform: rotate(180deg);
+}
+
+.seealso__list__container {
+    display: grid;
+    align-items: center;
+    justify-content: start;
+}
+
+.seealso__list__title {
+    display: block;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-normal);
+    line-height: 40px;
+    color: #666666;
+    padding-left: 20px;
+}
+
+.seealso__container {
+    display: grid;
+    align-items: start;
+    justify-content: start;
+    grid-template-columns: 180px 350px;
+    gap: 20px;
+    border-right: 5px solid var(--dark-green);
+    border-left: 5px solid var(--dark-green);
+    padding: 10px 10px;
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+}
+
+.seealso__images {
+    max-width: 180px;
+    height: 120px;
+    overflow: hidden;
+    margin: 20px 0px;
+    border-radius: 2px;
+    transition: filter 0.5s ease-in-out;
+    filter: grayscale(100%); 
+        &:hover {
+            cursor: pointer;
+            filter: grayscale(0%); 
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+        }
+}
+
+.seealso__text__container {
+    padding: 20px 0;
+    line-height: 18px;
+}
+
+.seealso__title {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-normal);
+    color: #666666;
+    padding-top: 15px;
+}
+
+.seealso__text {
+    font-size: var(--fs-sm);
+}
+
+@media (max-width: 600px) {
+    .news__title {
+        font-size: var(--fs-md);
+        line-height: 18px;
+    }
+    .news__container {
+        border-right: 0px solid var(--dark-green);
+        border-left: 0px solid var(--dark-green);
+    }
+    .news__author {
+        font-size: 10px;
+    }
+    .news__text {
+        padding: 0px 0px;
+    }
+    .news__images {
+        max-width: 350px;
+        height: 200px;
+    }
+    .seealso__container {
+        justify-items: center;
+        grid-template-columns: 280px;
+        gap: 0;
+        padding: 10px 20px;
+    }
+    .seealso__text__container {
+        padding: 0px 0px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1040px) {
+    .news__images {
+        margin: 30px 10px 30px 30px;
+    }
+}

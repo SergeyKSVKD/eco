@@ -1,23 +1,28 @@
-import styles from './NewsPage.module.css'
-import list from './newslist'
+import styles from './NewsPage.module.scss'
 import { useState, useRef, useCallback } from 'react'
 import cn from 'classnames'
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeActivePage } from './newsSlice'
 
 export const NewsPage = () => {
-    const [activePage, setActivePage] = useState(1)
-    const [newsList, setNewsList] = useState(list.slice(0, 10))
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const activePage = useSelector(state => state.newsState.activePage)
+    const list = useSelector(state => state.newsState.news)
+    const [newsList, setNewsList] = useState(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
     const startPage = useRef()
 
     const PageBtn = ({ page }) => {
         const pageHandler = useCallback(() => {
             setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-            setActivePage(page)
+            dispatch(changeActivePage(page))
             startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }, [])
 
         return <div
-            className={cn(styles.pageBtn, { [styles.activePageBtn]: activePage === page })}
+            className={cn(styles.page__button, { [styles.active__page__button]: activePage === page })}
             onClick={pageHandler}
         >{page}</div>
     }
@@ -34,7 +39,7 @@ export const NewsPage = () => {
         }
         let page = activePage + 1
         setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-        setActivePage(activePage + 1)
+        dispatch(changeActivePage(activePage + 1))
         startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     const arrowPreviousHandler = () => {
@@ -43,28 +48,32 @@ export const NewsPage = () => {
         }
         let page = activePage - 1
         setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-        setActivePage(activePage - 1)
+        dispatch(changeActivePage(activePage - 1))
         startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
-    const data = newsList.map((news, index) =>
-        <div key={index}>
+    const data = newsList.map((news) => {
+        const seeMore = () => navigate(`/news/${news.id}`, { state: { news } })
+
+        return <div key={news.id}>
             <hr className={styles.devider} />
-            <div key={news.imgsrc} className={styles.newsContainer}>
-                {news.title ? <span className={styles.newsTitle}>{news.title}</span> : null}
-                <div className={styles.newsTextContainer}>
-                    <div className={styles.newsImages}>
-                        <img src={require(`./assets/images/${news.imgsrc}`)} alt={news.imgalt} />
-                    </div>
-                    <div>
-                        {news.text.map((paragraph) => <p key={paragraph} className={styles.newsText}>{paragraph}</p>)}
-                    </div>
+            <div key={news.id} className={styles.news__page__container}>
+                <div className={styles.news__page__images}
+                    onClick={seeMore}>
+                    <img src={require(`./assets/images/${news.imgsrc}`)} alt={news.imgalt} />
                 </div>
-                <div className={styles.authorsContainer}>
-                    {news.description.map((description) => <p key={description} className={styles.newsAuthor}>{description}</p>)}
+                <div className={styles.news__page__text__container}>
+                    {news.title ? <span className={styles.news__page__title}
+                        onClick={seeMore}>{news.title}</span> : null}
+                    <div className={styles.news__page__text}>
+                        {news.promo ? news.promo.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
+                    </div>
+                    <div className={styles.more__btn}
+                        onClick={seeMore}>Читать новость <ArrowIcon />
+                    </div>
                 </div>
             </div></div>
-    )
+    })
 
 
     return (
@@ -74,11 +83,11 @@ export const NewsPage = () => {
             <hr className={styles.devider} />
 
             <div className={styles.pagination}>
-                <div className={styles.pageBtn}
+                <div className={styles.page__button}
                     onClick={arrowPreviousHandler}
                 ><ArrowIcon className={styles.rotate} /></div>
                 {pagination}
-                <div className={styles.pageBtn}
+                <div className={styles.page__button}
                     onClick={arrowNextHandler}
                 ><ArrowIcon /></div>
             </div>

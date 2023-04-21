@@ -30,20 +30,23 @@ export const Navbar = () => {
 
     const subTitlesAbout = [
         { title: 'О нас', route: '/aboutus' },
-        // { title: 'События', route: '/events' },
         { title: 'Как связаться', route: '/contacts' },
         { title: 'Актив экоклуба', route: '/asset' },
     ]
     const subTitlesProject = [
         { title: 'Экологическая политика', route: '/ecopolitic' },
-        // { title: 'Рециклинг', route: '/recycling' },
-        // { title: 'Водоснабжение', route: '/watersupply' },
         { title: 'Выбросы в атмосферу', route: '/airemissions' },
-        // { title: 'Энергосбережение', route: '/energysaving' },
-        // { title: 'Экодизайн', route: '/ecodesign' },
-        // { title: 'Другие направления', route: '/otherdestinations' },
         { title: 'Инициативы', route: '/initiatives' },
     ]
+
+    const about = []
+    const project = []
+    subTitlesAbout.forEach((el) => {
+        about.push(el.route)
+    })
+    subTitlesProject.forEach((el) => {
+        project.push(el.route)
+    })
 
     const [isActiveMenu, setActiveMenu] = useState(
         {
@@ -59,32 +62,24 @@ export const Navbar = () => {
     }
 
     function backToPreviousActiveLink() {
-        const about = []
-        const project = []
         if (pathname === '/') {
             return setActiveMenu({
                 ...initial,
                 home: true,
             })
         }
-        subTitlesAbout.forEach((el) => {
-            about.push(el.route)
-        })
         if (about.includes(pathname)) {
             return setActiveMenu({
                 ...initial,
                 about: true,
             })
         }
-        subTitlesProject.forEach((el) => {
-            project.push(el.route)
-        })
         if (project.includes(pathname)) {
-                return setActiveMenu({
-                    ...initial,
-                    projects: true,
-                })
-            }
+            return setActiveMenu({
+                ...initial,
+                projects: true,
+            })
+        }
         setActiveMenu({
             ...initial,
             [pathname.slice(1, pathname.length)]: true,
@@ -112,22 +107,18 @@ export const Navbar = () => {
                 useful: true,
             })
         }
-        subTitlesAbout.forEach((el) => {
-            if (pathname === el.route) {
-                return setActiveMenu({
-                    ...initial,
-                    about: true,
-                })
-            }
-        })
-        subTitlesProject.forEach((el) => {
-            if (pathname === el.route) {
-                return setActiveMenu({
-                    ...initial,
-                    projects: true,
-                })
-            }
-        })
+        if (about.includes(pathname)) {
+            return setActiveMenu({
+                ...initial,
+                about: true,
+            })
+        }
+        if (project.includes(pathname)) {
+            return setActiveMenu({
+                ...initial,
+                projects: true,
+            })
+        }
     }, [pathname])
 
     return (
