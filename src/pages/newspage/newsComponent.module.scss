@@ -6,6 +6,7 @@
     border-left: 5px solid var(--dark-green);
     margin-top: 30px;
     padding: 20px 10px;
+    box-shadow: var(--shadow);
 }
 
 .news__text__container {
@@ -19,7 +20,7 @@
     font-size: var(--fs-md);
     font-weight: var(--fw-normal);
     line-height: 40px;
-    color: #666666;
+    color: var(--gray);
     text-align: center;
 }
 
@@ -75,6 +76,7 @@
     align-items: center;
     justify-items: center;
     padding: 20px 20px;
+    margin: 30px 0;
 }
 
 .news__button {
@@ -84,11 +86,12 @@
     gap: 10px;
     align-items: center;
     justify-content: center;
-    background-color: #666666;
+    background-color: var(--gray);
     color: white;
     font-weight: var(--fw-bolder);
     padding: 6px 20px;
     border-radius: 4px;
+    box-shadow: var(--shadow);
         &:hover {
             cursor: pointer;
             background-color: var(--orange);
@@ -110,7 +113,7 @@
     font-size: var(--fs-md);
     font-weight: var(--fw-normal);
     line-height: 40px;
-    color: #666666;
+    color: var(--gray);
     padding-left: 20px;
 }
 
@@ -136,7 +139,7 @@
     overflow: hidden;
     margin: 20px 0px;
     border-radius: 2px;
-    transition: filter 0.5s ease-in-out;
+    transition: filter 0.2s ease-in-out;
     filter: grayscale(100%); 
         &:hover {
             cursor: pointer;

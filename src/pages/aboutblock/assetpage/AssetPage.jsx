@@ -1,4 +1,4 @@
-import styles from './AssetPage.module.css'
+import styles from './AssetPage.module.scss'
 import { motion } from 'framer-motion'
 import { ReactComponent as EmailIcon } from './assets/email.svg'
 import { ReactComponent as PhoneIcon } from './assets/phone.svg'
@@ -20,7 +20,7 @@ export const AssetPage = () => {
     return (
         <>
             <span
-                className={styles.title}>
+                className={styles.title__gray}>
                 <motion.span
                     initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0, }} variants={motionTitleVariants}
                 >Актив </motion.span>
@@ -29,14 +29,14 @@ export const AssetPage = () => {
                 >экологического </motion.span>
                 <motion.span
                     initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0.4, }} variants={motionTitleVariants}
-                >клуба "Жизнь" </motion.span>
+                >клуба «Жизнь» </motion.span>
                 <motion.span
                     initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0.6, }} variants={motionTitleVariants}
                 >СамГТУ</motion.span>
             </span>
             <hr className={styles.devider} />
             <div className={styles.wrapper}>
-                {stuf.map((el, index) => <div className={styles.cardContainer} key={index + 100}>
+                {stuf.map((el, index) => <div className={styles.card__container} key={index + 100}>
                     <div className={styles.header}></div>
                     <div className={styles.profile}></div>
                     <div className={styles.profile2}></div>
@@ -44,16 +44,20 @@ export const AssetPage = () => {
                     {el.imgsrc ? <div className={styles.images}            >
                         <img src={require(`./assets/images/${el.imgsrc}`)} alt={el.imgalt ? el.imgalt : 'eco-samgtu'} />
                     </div> : null}
-                    <span className={styles.postContainer}>
+                    <span className={styles.post__container}>
                         {el.post ? el.post.map((postItem) => <span key={postItem}>{postItem}</span>) : null}
                     </span>
-                    <span className={styles.contactsContainer}>
+                    {/* <span className={styles.contacts__container}>
                         {el.phone ?
                             <span className={styles.contact}><PhoneIcon />{el.phone}</span> : null}
                         {el.email ?
                             <span className={styles.contact}><EmailIcon />{el.email}</span> : null}
-                    </span>
+                    </span> */}
                     <div className={styles.footer}></div>
+                    {el.quote ?
+                        <blockquote className={styles.blockquote}>
+                            <span>{el.quote}</span>
+                        </blockquote> : null}
                 </div>)}
             </div>
         </>

@@ -1,4 +1,4 @@
-import styles from './UsefulPage.module.css'
+import styles from './UsefulPage.module.scss'
 import { motion } from 'framer-motion'
 
 export const UsefulPage = () => {
@@ -23,7 +23,7 @@ export const UsefulPage = () => {
 
     return (
         <>
-            <span className={styles.title}>
+            <span className={styles.title__red}>
                 <motion.span
                     initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0, }} variants={motionTitleVariants}
                 >Карты </motion.span>
@@ -44,16 +44,16 @@ export const UsefulPage = () => {
             <motion.div
                 initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0, }} variants={motionScaleVariants}
             >
-                <span className={styles.subTitle2}>Пункты приёма вторсырья на Recyclemap</span>
-                <a href='https://recyclemap.ru/samara' target='_blank' className={styles.images}>
+                <span className={styles.sub__title__gray}>Пункты приёма вторсырья на Recyclemap</span>
+                <a href='https://recyclemap.ru/samara' target='_blank' rel="noreferrer" className={styles.images}>
                     <img src={require(`./assets/recyclemap.webp`)} alt='recyclemap' />
                 </a>
             </motion.div>
             <motion.div
                 initial={'hidden'} animate={'visible'} transition={{ duration: 1, delay: 0, }} variants={motionScaleVariants}
             >
-                <span className={styles.subTitle2}>Пункты приёма вторсырья на Яндекс.Картах</span>
-                <a href='https://yandex.ru/maps/51/samara/?ll=50.219014%2C53.202399&mode=usermaps&um=mymaps%3AtM8xzEyg4MqnRQu75wki619F-JO7Ta03&z=12' target='_blank' className={styles.images}>
+                <span className={styles.sub__title__gray}>Пункты приёма вторсырья на Яндекс.Картах</span>
+                <a href='https://yandex.ru/maps/51/samara/?ll=50.219014%2C53.202399&mode=usermaps&um=mymaps%3AtM8xzEyg4MqnRQu75wki619F-JO7Ta03&z=12' target='_blank' rel="noreferrer" className={styles.images}>
                     <img src={require(`./assets/yandexmap.webp`)} alt='yandexmap' />
                 </a>
             </motion.div>

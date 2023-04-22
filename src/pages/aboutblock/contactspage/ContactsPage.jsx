@@ -1,4 +1,4 @@
-import styles from './ContactsPage.module.css'
+import styles from './ContactsPage.module.scss'
 import cn from 'classnames'
 import { useResize } from '../../../helpers/useResize'
 import { ReactComponent as VKIcon } from './assets/vk.svg'

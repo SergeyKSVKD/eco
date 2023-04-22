@@ -1,4 +1,4 @@
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.scss'
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import cn from 'classnames'
@@ -124,7 +124,7 @@ export const Navbar = () => {
     return (
         <>
             {!useResize().isScreenSm ?
-                <div className={styles.burgerMenu}>
+                <div className={styles.burger__menu}>
                     <span className={styles.cursor}>
                         <MenuIcon
                             onClick={() => setActiveMenuBurger(!isActiveMenuBurger)}
@@ -225,8 +225,8 @@ export const Navbar = () => {
                     </Link>
 
                     {isActiveSubmenu.about ?
-                        <div className={cn(styles.aboutSubMenu, {
-                            [styles.activeSubMenu]: isActiveSubmenu.about
+                        <div className={cn(styles.about__sub__menu, {
+                            [styles.active__sub__menu]: isActiveSubmenu.about
                         })} onMouseLeave={() => {
                             resetActiveSubMenu()
                             backToPreviousActiveLink()
@@ -244,8 +244,8 @@ export const Navbar = () => {
                         </div> : null}
 
                     {isActiveSubmenu.projects ?
-                        <div className={cn(styles.projectsSubMenu, {
-                            [styles.activeSubMenu]: isActiveSubmenu.projects
+                        <div className={cn(styles.projects__sub__menu, {
+                            [styles.active__sub__menu]: isActiveSubmenu.projects
                         })} onMouseLeave={() => {
                             resetActiveSubMenu()
                             backToPreviousActiveLink()

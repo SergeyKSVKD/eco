@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'robotoslab';
+  src: url('./fonts/RobotoSlab-Regular.woff2') format('woff2'),
+       url('./fonts/RobotoSlab-Regular.woff') format('woff'),
+       url('./fonts/RobotoSlab-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotoslabMedium';
+  src: url('./fonts/RobotoSlab-Medium.woff2') format('woff2'),
+       url('./fonts/RobotoSlab-Medium.woff') format('woff'),
+       url('./fonts/RobotoSlab-Medium.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--family);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  background-color: var(--light-green);
+  color: #494e53;
+  /* color: #2e2d2c; */
+}
+
+:root {
+  /* Typography */
+  --family: 'robotoslab';
+  --fs-sm: 14px;
+  --fs-md: 20px;
+  --fs-lg: 28px;
+  --fw-light: 400;
+  --fw-normal: 600;
+  --fw-bold: 700;
+  --lh: 24px;
+
+  /* color palette */
+  --light-green: #dffcde;
+  --dark-green: #40a353;
+  /* --white: rgba(255,255,255,0.9); */
+  --white: white;
+  --red: #e31235;
+  --blue: #4bc6f3;
+  --dark-blue: #3c5abd;
+  --gray: #494e53;
+  --light-gray: #666666;
+  --light-gray: #e2ebf5;
+  --orange: #ec971f;
+  --orange-linear: linear-gradient(90deg, #ec971f 56.91%,#d6bb00);
+  --layout: linear-gradient(140deg, #2d9758 0%, rgb(47, 131, 62) 50%, #2b9566 100%); 
+  --radii: 0.5rem;
+
+  /* Shadow */
+  --shadow: inset 4px 3px 8px 0px rgba(0, 0, 0, 0.3), 
+  10px 10px 10px rgba(0, 0, 0, 0.3), 
+  10px 10px 10px rgba(0, 0, 0, 0.3), 
+  inset -20px -20px 25px rgba(255, 255, 255, 0.09);
+}
+
+@media (max-width: 470px) {
+  :root {
+  --fs-sm: 12px;
+  --fs-md: 18px;
+  --fs-lg: 26px;
+  --lh: 18px;
+  }
+}
+/* @media (min-width: 1000px) {
+  :root {
+  --fs-sm: 16px;
+  --fs-md: 22px;
+  --fs-lg: 30px;
+  }
+} */

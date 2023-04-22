@@ -1,4 +1,4 @@
-import styles from './InitiativesPage.module.css'
+import styles from './InitiativesPage.module.scss'
 import cn from 'classnames'
 import { useState } from 'react'
 import { Modal } from '../../../components/index'
@@ -7,7 +7,6 @@ import { ReactComponent as CloseIcon } from './assets/close.svg'
 import { ReactComponent as EmailIcon } from './assets/email.svg'
 import { ReactComponent as PhoneIcon } from './assets/phone.svg'
 import initiativesList from './initiativesList.json'
-import { validateEmail as handleStateChangeWithEmailValidation } from '../../../helpers/index'
 
 export const InitiativesPage = () => {
 
@@ -107,7 +106,7 @@ export const InitiativesPage = () => {
 
     const submitEmail = async (e) => {
         e.preventDefault()
-        const response = await fetch(`${url}`, {
+        await fetch(`${url}`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -179,19 +178,19 @@ export const InitiativesPage = () => {
                     <div className={styles.initiative}>
                         <span className={styles.number}>{index + 1}</span>
                         <br />
-                        <p className={styles.textInitiative}>Название инициативы: &nbsp;{el.name}</p>
-                        <p className={styles.textInitiative}>Описание инициативы: &nbsp;{el.description}</p>
-                        <p className={styles.textInitiative}>Состояние на дату регистрации: &nbsp;{el.status}</p>
-                        <p className={styles.textInitiative}>Автор инициативы (ФИО): &nbsp;{el.author}</p>
-                        <p className={styles.textInitiative}>Подразделение / Должность: &nbsp;{el.department}</p>
+                        <p>Название инициативы: &nbsp;<span className={styles.textInitiative}>{el.name}</span></p>
+                        <p>Описание инициативы: &nbsp;<span className={styles.textInitiative}>{el.description}</span></p>
+                        <p>Состояние на дату регистрации: &nbsp;<span className={styles.textInitiative}>{el.status}</span></p>
+                        <p>Автор инициативы (ФИО): &nbsp;<span className={styles.textInitiative}>{el.author}</span></p>
+                        <p>Подразделение / Должность: &nbsp;<span className={styles.textInitiative}>{el.department}</span></p>
                         <div className={styles.contacts}>Контакты:
                             {el.contacts[0] ?
                                 <p className={styles.phone}><PhoneIcon /> &nbsp;{el.contacts[0]}</p> : null}
                             {el.contacts[1] ?
                                 <p className={styles.email}><EmailIcon /> &nbsp;{el.contacts[1]}</p> : null}
                         </div>
-                        <p className={styles.textInitiative}>Дата регистрации инициативы: &nbsp;{el.date}</p>
-                        <p className={styles.textInitiative}>Возможность публикаци: &nbsp;{el.published}</p>
+                        <p className={styles.textInitiative}>Дата регистрации инициативы: &nbsp;<span className={styles.textInitiative}>{el.date}</span></p>
+                        <p >Возможность публикаци: &nbsp;<span className={styles.textInitiative}>{el.published}</span></p>
                     </div>
                 </div>
             )}
@@ -212,10 +211,10 @@ export const InitiativesPage = () => {
                     >
                         <legend className={styles.legend}>Регистрация инициатив</legend>
                         <input className={cn(styles.hidden)}
-                        type='hidden'
-                        name="name"
-                        value={initiativesState.name}
-                    />
+                            type='hidden'
+                            name="name"
+                            value={initiativesState.name}
+                        />
                         <div className={styles.inputContainer}>
                             <input className={cn(styles.input, {
                                 [styles.error]: !isValid.fullname

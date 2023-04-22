@@ -1,0 +1,72 @@
+.header__container {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-template-rows: 100px;
+    justify-content: space-between;
+}
+
+.link__container {
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: 180px 120px;
+    align-items: center;
+    justify-items: center;
+}
+
+.images {
+    display: grid;
+    align-items: center;
+    width: 90px;
+    height: 100px;
+    visibility: visible;
+}
+
+.eco__logo {
+    width: 110%;
+    padding: 5px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+a {
+    img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: var(--shadow);  
+    }   
+}
+
+.link {
+    display: grid;
+    width: 160px;
+    height: 100px;
+    align-items: center;
+    justify-items: center;
+}
+
+.logo {
+    width: 130px;
+}
+
+@media (max-width: 871px) {
+    .header__container {
+        display: grid;
+        grid-template-columns: minmax(600px, 870px);
+        grid-template-rows: repeat(2, 100px);
+        justify-items: center;
+    } 
+}
+
+@media (max-width: 600px) {
+    .header__container {
+        display: grid;
+        grid-template-columns: minmax(180px, 320px) auto;
+        grid-template-rows: 100px;
+        justify-items: left;
+    } 
+    .link__container {
+        grid-template-columns: minmax(180px, 320px);
+    }
+}
