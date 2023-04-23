@@ -244,7 +244,7 @@ export const HomePage = () => {
             <br />
             <br />
 
-            <div>
+            <div className={styles.hover}>
                 <div className={styles.container}
                     onClick={(e) => setActiveMenuHandler(e)}
                 >
@@ -264,7 +264,7 @@ export const HomePage = () => {
                 </span>
             </div>
 
-            <div>
+            <div className={styles.hover}>
                 <div className={styles.container}
                     onClick={(e) => setActiveMenuHandler(e)}
                 >
@@ -284,7 +284,7 @@ export const HomePage = () => {
                 </span>
             </div>
 
-            <div>
+            <div className={styles.hover}>
                 <div className={styles.container}
                     onClick={(e) => setActiveMenuHandler(e)}
                 >
@@ -303,7 +303,7 @@ export const HomePage = () => {
                         : null}</span>
             </div>
 
-            <div>
+            <div className={styles.hover}>
                 <div className={styles.container}
                     onClick={(e) => setActiveMenuHandler(e)}
                 >
@@ -352,7 +352,7 @@ export const HomePage = () => {
                 </span>
             </div>
 
-            <div>
+            <div className={styles.hover}>
                 <div className={styles.container}
                     onClick={(e) => setActiveMenuHandler(e)}
                 >

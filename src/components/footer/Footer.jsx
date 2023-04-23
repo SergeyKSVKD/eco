@@ -25,7 +25,7 @@ export const Footer = () => {
                         <a className={styles.mail__link} href='mailto:ecoclub@samgtu.ru'>
                             ecoclub@samgtu.ru</a>
                     </span>
-                    <span className={styles.contacts}><UniversityIcon /> 443100 Россия, г.Самара, ул. Первомайская, д. 18, кафедра ХТПЭ</span>
+                    <span className={styles.contacts}><UniversityIcon /> 443100 Россия, г.Самара, ул. Первомайская, д. 18, кафедра «ХТПЭ»</span>
                     <span className={styles.contacts}><PhoneIcon /> <a className={styles.mail__link} href='tel:8-927-686-76-91'>
                         тел. 8 (927) 686-76-91</a></span>
                 </div>

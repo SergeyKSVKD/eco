@@ -150,6 +150,7 @@
     padding: 20px;
     z-index: 10;
     background-color: white;
+    box-shadow: var(--shadow);
 }
 
 .blockquote::after {
@@ -171,7 +172,7 @@
     content:"";
     position: absolute;
     width: 80px;
-    border: 6px solid #FFF;
+    border: 6px solid white;
     bottom: -3px;
     left: 50px;
     z-index: 1;

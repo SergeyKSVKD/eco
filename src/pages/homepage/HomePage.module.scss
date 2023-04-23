@@ -113,6 +113,10 @@ a {
     box-shadow: var(--shadow);
 }
 
+.hover:hover {
+    cursor: pointer;   
+}
+
 .images2017 {
     display: grid;
     align-items: center;

@@ -6,7 +6,6 @@ import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
 import { ReactComponent as ShareIcon } from './assets/share.svg'
 import { Modal } from '../../components/index'
 
-
 export const News = () => {
     const location = useLocation();
     const navigate = useNavigate()

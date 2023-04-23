@@ -21,10 +21,10 @@ export const useResize = () => {
 
   return {
     width,
-    isScreenSm: width >= SCREEN_SM,
-    isScreenMd: width >= SCREEN_MD,
-    isScreenLg: width >= SCREEN_LG,
-    isScreenXl: width >= SCREEN_XL,
-    isScreenXxl: width >= SCREEN_XXL,
+    isScreenSm: width > SCREEN_SM,
+    isScreenMd: width > SCREEN_MD,
+    isScreenLg: width > SCREEN_LG,
+    isScreenXl: width > SCREEN_XL,
+    isScreenXxl: width > SCREEN_XXL,
   };
 };

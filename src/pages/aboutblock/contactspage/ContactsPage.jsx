@@ -95,7 +95,7 @@ export const ContactsPage = () => {
             return
         }
         e.preventDefault()
-        const response = await fetch(`${url}`, {
+        await fetch(`${url}`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -283,9 +283,9 @@ export const ContactsPage = () => {
                         <span className={styles.line}></span>
                     </div>
 
-                    {mailerState.fullname != '' && isValid.fullname 
-                    && mailerState.email != '' && isValid.email 
-                    && mailerState.work != '' && isValid.work ?
+                    {mailerState.fullname != '' && isValid.fullname
+                        && mailerState.email != '' && isValid.email
+                        && mailerState.work != '' && isValid.work ?
                         <button
                             className={styles.submit}
                             onClick={

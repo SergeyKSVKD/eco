@@ -1,15 +1,16 @@
 import styles from './NewsPage.module.scss'
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import cn from 'classnames'
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeActivePage } from './newsSlice'
+import { changeActivePage, changeuserScrollPosition } from './newsSlice'
 
 export const NewsPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const activePage = useSelector(state => state.newsState.activePage)
+    const userPosition = useSelector(state => state.newsState.userScrollPosition)
     const list = useSelector(state => state.newsState.news)
     const [newsList, setNewsList] = useState(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
     const startPage = useRef()
@@ -52,8 +53,33 @@ export const NewsPage = () => {
         startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
+    useEffect(() => {
+        if (userPosition !== 0) {
+            window.scrollTo({
+                top: userPosition,
+                behavior: "smooth",
+            })
+            dispatch(changeuserScrollPosition(0))
+        }
+    }, [])
+
+    let scroll = 0
+    useEffect(() => {
+        const handleScroll = () => {
+            scroll = window.pageYOffset
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     const data = newsList.map((news) => {
-        const seeMore = () => navigate(`/news/${news.id}`, { state: { news } })
+        const seeMore = () => {
+            dispatch(changeuserScrollPosition(scroll))
+            navigate(`/news/${news.id}`, { state: { news } })
+        }
 
         return <div key={news.id}>
             <hr className={styles.devider} />
@@ -74,7 +100,6 @@ export const NewsPage = () => {
                 </div>
             </div></div>
     })
-
 
     return (
         <>

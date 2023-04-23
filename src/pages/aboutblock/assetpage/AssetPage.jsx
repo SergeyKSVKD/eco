@@ -1,7 +1,7 @@
 import styles from './AssetPage.module.scss'
 import { motion } from 'framer-motion'
-import { ReactComponent as EmailIcon } from './assets/email.svg'
-import { ReactComponent as PhoneIcon } from './assets/phone.svg'
+// import { ReactComponent as EmailIcon } from './assets/email.svg'
+// import { ReactComponent as PhoneIcon } from './assets/phone.svg'
 import stuf from './stuf.json'
 
 export const AssetPage = () => {
