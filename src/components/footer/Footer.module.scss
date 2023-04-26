@@ -61,7 +61,7 @@
 
 @media (max-width: 520px) {
     .hello {
-        font-size: 12px;
+        font-size: var(--fs-sm);
         text-align: center;
     }
     .hello__container{
@@ -71,5 +71,8 @@
         padding-left: 30px;
         font-size: 12px;
         align-items: center;
+    }
+    .mail__link {
+        font-size: 12px;
     }
 }

@@ -11,3 +11,4 @@ export { AiremissionsPage } from './projectsblock/airemissionspage/AiremissionsP
 export { EcopoliticPage } from './projectsblock/ecopoliticpage/EcopoliticPage'
 export { InitiativesPage } from './projectsblock/initiativespage/InitiativesPage'
 export { EcomanagePage } from './projectsblock/ecomanagepage/EcomanagePage'
+export { OuractivitiesPage } from './projectsblock/ouractivitiespage/OuractivitiesPage'

@@ -1,7 +1,8 @@
 import { Navigate } from 'react-router-dom'
 import {
     HomePage, NewsPage, UsefulPage, AboutUsPage, AssetPage, ContactsPage,
-    AiremissionsPage, EcopoliticPage, InitiativesPage, News, EcomanagePage
+    AiremissionsPage, EcopoliticPage, InitiativesPage, News, EcomanagePage,
+    OuractivitiesPage,
 } from './pages/index'
 import { Layout } from './components/index'
 
@@ -16,6 +17,7 @@ const routesList = [
     { element: <EcopoliticPage />, path: '/ecopolitic' },
     { element: <EcomanagePage />, path: '/ecomanage' },
     { element: <InitiativesPage />, path: '/initiatives' },
+    { element: <OuractivitiesPage />, path: '/ouractivities' },
     { element: <News />, path: '/news/:id' },
 ]
 

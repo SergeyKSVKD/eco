@@ -1,4 +1,31 @@
 @font-face {
+  font-family: 'rubik';
+  src: url('./fonts/rubik-regular-webfont.woff2') format('woff2'),
+       url('./fonts/rubik-regular-webfont.woff') format('woff'),
+       url('./fonts/rubik-regular-webfont.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'pt-astra';
+  src: url('./fonts/pt-astra-serif_regular-webfont.woff2') format('woff2'),
+       url('./fonts/pt-astra-serif_regular-webfont.woff') format('woff'),
+       url('./fonts/pt-astra-serif_regular-webfont.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'bitter';
+  src: url('./fonts/bitter-regular-webfont.woff2') format('woff2'),
+       url('./fonts/bitter-regular-webfont.woff') format('woff'),
+       url('./fonts/bitter-regular-webfont.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'robotoslab';
   src: url('./fonts/RobotoSlab-Regular.woff2') format('woff2'),
        url('./fonts/RobotoSlab-Regular.woff') format('woff'),
@@ -34,10 +61,11 @@ body {
 
 :root {
   /* Typography */
-  --family: 'robotoslab';
-  --fs-sm: 14px;
-  --fs-md: 20px;
-  --fs-lg: 28px;
+  --family: 'rubik';
+  --fs-mini: 14px;
+  --fs-sm: 16px;
+  --fs-md: 24px;
+  --fs-lg: 32px;
   --fw-light: 400;
   --fw-normal: 600;
   --fw-bold: 700;
@@ -45,7 +73,8 @@ body {
 
   /* color palette */
   --light-green: #dffcde;
-  --dark-green: #40a353;
+  // --dark-green: #40a353;
+  --dark-green: #358235;
   /* --white: rgba(255,255,255,0.9); */
   --white: white;
   --red: #e31235;
@@ -56,7 +85,8 @@ body {
   --light-gray: #e2ebf5;
   --orange: #ec971f;
   --orange-linear: linear-gradient(90deg, #ec971f 56.91%,#d6bb00);
-  --layout: linear-gradient(140deg, #2d9758 0%, rgb(47, 131, 62) 50%, #2b9566 100%); 
+  --layout: linear-gradient(140deg, #358235  0%, #389538   50%, #358235  100%); 
+  // --layout: linear-gradient(140deg, #2d9758 0%, rgb(47, 131, 62) 50%, #2b9566 100%); 
   --radii: 0.5rem;
 
   /* Shadow */
@@ -68,9 +98,9 @@ body {
 
 @media (max-width: 470px) {
   :root {
-  --fs-sm: 12px;
-  --fs-md: 18px;
-  --fs-lg: 26px;
+  --fs-sm: 14px;
+  --fs-md: 20px;
+  --fs-lg: 28px;
   --lh: 18px;
   }
 }

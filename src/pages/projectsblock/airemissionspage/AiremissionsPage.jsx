@@ -5,7 +5,7 @@ import { ReactComponent as EarthIcon } from './assets/earth.svg'
 export const AiremissionsPage = () => {
     return (
         <>
-            <p className={cn(styles.title__gray)}>Раздел "Выбросы в атмосферу" ожидает идей от студентов и сотрудников.</p>
+            <p className={cn(styles.title__gray)}>Раздел «Выбросы в атмосферу» ожидает идей от студентов и сотрудников.</p>
             <div className={styles.images}            >
                 <img src={require('./assets/atmo.webp')} alt="atmo-samgtu" />
             </div>

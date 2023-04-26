@@ -35,6 +35,7 @@ export const Navbar = () => {
     ]
     const subTitlesProject = [
         { title: 'Экологический менеджмент', route: '/ecomanage' },
+        { title: 'Наша деятельность', route: '/ouractivities' },
         { title: 'Экологическая политика', route: '/ecopolitic' },
         { title: 'Выбросы в атмосферу', route: '/airemissions' },
         { title: 'Инициативы', route: '/initiatives' },

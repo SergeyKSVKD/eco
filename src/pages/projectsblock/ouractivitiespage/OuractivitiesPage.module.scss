@@ -1,0 +1,190 @@
+.title__gray {
+    display: block;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-normal);
+    color: var(--gray);
+    text-align: center;
+}
+
+.title__orange {
+    display: block;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-normal);
+    color: var(--orange);
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+.sub__title__orange {
+    display: block;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-normal);
+    color: var(--orange);
+    text-align: start;
+}
+
+.content__block__1 {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: minmax(100px, 300px) minmax(100px, 400px);
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0px 30px;
+}
+
+.content__block__2 {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: minmax(100px, 400px) minmax(100px, 300px);
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0px 30px;
+}
+
+.images {
+    display: grid;
+    visibility: visible;
+    max-width: 300px;
+        img {
+            width: 100%;
+        }   
+}
+
+.order {
+    order: 1;
+}
+
+.join__us__button {
+    display: grid;
+    grid-template-columns: 32px auto;
+    max-width: 380px;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-normal);
+    margin: 20px 0;
+    padding: 5px 20px;
+    box-shadow: rgb(0 0 0 / 40%) 3px 3px 3px 3px;
+    align-items: center;
+    justify-items: start;
+    background: var(--orange);
+    color: var(--white);
+    user-select: none;
+    border-radius: 10px;
+    line-height: 2;
+    transform: scale(1);
+    transition: 0.2s ease-in;
+        &:hover {
+            transform: scale(1.05);
+        }
+}
+
+.join__us__container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+}
+
+.volunteer_container {
+    background-image: url('./assets/Frame-1.webp');
+    background-position: center;
+    border-radius: 10px;
+    padding: 100px 0;
+    display: grid;
+    grid-template-columns: auto minmax(300px, 600px) auto;
+    margin: 30px;
+}
+
+.volunteer_text__container {
+    display: grid;
+    background: var(--gray);
+    opacity: 80%;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.volunteer_text {
+    font-size: 18px;
+    font-weight: var(--fw-normal);
+    color: white;
+}
+
+.content__block__3 {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: minmax(100px, 400px) minmax(100px, 300px);
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0px 30px;
+}
+
+.content__block__4 {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: minmax(150px, 400px) minmax(150px, 400px);
+    align-items: start;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0px 30px;
+}
+
+@media (max-width: 700px) {
+    .title__gray {
+        font-size: var(--fs-md);
+        line-height: var(--lh);
+    }
+    .title__orange {
+        font-size: var(--fs-md);
+        line-height: var(--lh);
+    }
+    .sub__title__orange {
+        font-size: var(--fs-sm);
+        text-align: center;
+    }
+    .content__block__1 {
+        grid-template-columns: auto;
+        justify-items: center;
+        gap: 10px;
+        margin: 30px 0;
+        padding: 0px 10px;
+    }
+    .content__block__2 {
+        gap: 10px;
+        grid-template-columns: auto;
+        justify-items: center;
+        margin: 30px 0;
+        padding: 0px 10px;
+    }
+    .order {
+        order: -1;
+    }
+    .join__us__button {
+        font-size: 12px;
+    }
+    .volunteer_container {
+        margin: 20px 0;
+    }
+    .volunteer__container {
+        grid-template-columns: auto 300px auto;
+    }
+    .volunteer_text {
+        font-size: var(--fs-sm);
+        line-height: 16px;
+    }
+    .content__block__3 {
+        gap: 10px;
+        grid-template-columns: auto;
+        justify-items: center;
+        margin: 30px 0;
+        padding: 0px 10px;
+    }
+    .content__block__4 {
+        gap: 10px;
+        grid-template-columns: auto;
+        justify-items: center;
+        margin: 30px 0;
+        padding: 0px 10px;
+    }
+}

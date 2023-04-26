@@ -158,7 +158,7 @@ a {
 .see__more {
     display: grid;
     grid-template-columns: 32px auto;
-    width: 200px;
+    width: 230px;
     padding: 5px 20px;
     box-shadow: rgb(0 0 0 / 40%) 3px 3px 3px 3px;
     align-items: center;
@@ -168,6 +168,9 @@ a {
     user-select: none;
     border-radius: 4px;
     line-height: 2;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
     transition: 0.2s ease-in;
     transform: scale(1);
         &:hover {
@@ -228,7 +231,7 @@ a {
     max-width: 380px;
     font-size: var(--fs-md);
     font-weight: var(--fw-normal);
-    margin-bottom: 10px;
+    margin: 20px 0;
     padding: 5px 20px;
     box-shadow: rgb(0 0 0 / 40%) 3px 3px 3px 3px;
     align-items: center;
@@ -252,11 +255,13 @@ a {
     }
     .accordion {
         font-size: var(--fs-sm);
-        font-weight: var(--fw-light);
+        font-weight: var(--fw-normal);
+        line-height: 20px;
     }
     .title__red {
         font-size: var(--fs-md);
         margin-bottom: 30px;
+        line-height: 24px;
     }
     .sub__title__red {
         font-size: var(--fs-sm);
@@ -265,7 +270,8 @@ a {
         font-size: var(--fs-sm);
     }
     .extend__title__white {
-        font-size: var(--fs-sm);
+        font-size: 16px;
+        font-weight: var(--fw-normal);
     }
     .extend__sub__title__gray {
         font-size: var(--fs-sm);

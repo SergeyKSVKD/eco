@@ -1,6 +1,6 @@
 import styles from './InitiativesPage.module.scss'
 import cn from 'classnames'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Modal } from '../../../components/index'
 import { ReactComponent as PlusIcon } from './assets/plus.svg'
 import { ReactComponent as CloseIcon } from './assets/close.svg'
@@ -9,6 +9,7 @@ import { ReactComponent as PhoneIcon } from './assets/phone.svg'
 import initiativesList from './initiativesList.json'
 
 export const InitiativesPage = () => {
+    const ref = useRef()
 
     const url = 'http://eco.local:5001/initiatives'
 
@@ -164,9 +165,13 @@ export const InitiativesPage = () => {
             })
     }
 
+    useEffect(() => {
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, [])
+
     return (
         <>
-            <span className={styles.title} >Инициативы</span>
+            <span className={styles.title} ref={ref}>Инициативы</span>
             <br />
             <div className={styles.addBtn}
                 onClick={() => setActiveForm(true)}
