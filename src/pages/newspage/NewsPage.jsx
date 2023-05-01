@@ -1,10 +1,10 @@
 import styles from './NewsPage.module.scss'
-import { useState, useRef, useCallback, useEffect } from 'react'
-import cn from 'classnames'
+import { useState, useEffect } from 'react'
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeActivePage, changeuserScrollPosition } from './newsSlice'
+import { changeuserScrollPosition, changeActivePage, changePaginationMode } from './newsSlice'
+import { Pagination, DynamicPagination } from '../../components/index'
 
 export const NewsPage = () => {
     const navigate = useNavigate()
@@ -12,46 +12,9 @@ export const NewsPage = () => {
     const activePage = useSelector(state => state.newsState.activePage)
     const userPosition = useSelector(state => state.newsState.userScrollPosition)
     const list = useSelector(state => state.newsState.news)
-    const [newsList, setNewsList] = useState(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
-    const startPage = useRef()
-
-    const PageBtn = ({ page }) => {
-        const pageHandler = useCallback(() => {
-            setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-            dispatch(changeActivePage(page))
-            startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, [])
-
-        return <div
-            className={cn(styles.page__button, { [styles.active__page__button]: activePage === page })}
-            onClick={pageHandler}
-        >{page}</div>
-    }
-
+    const mode = useSelector(state => state.newsState.paginationMode)
+    const [newsList = [], setNewsList] = useState(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
     const pageCount = Math.ceil(list.length / 10)
-    const arr = new Array(pageCount).fill({})
-    const pagination = arr.map((_, i) => {
-        return <PageBtn key={i + 1} page={i + 1} />
-    })
-
-    const arrowNextHandler = () => {
-        if (activePage === pageCount) {
-            return
-        }
-        let page = activePage + 1
-        setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-        dispatch(changeActivePage(activePage + 1))
-        startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-    const arrowPreviousHandler = () => {
-        if (activePage === 1) {
-            return
-        }
-        let page = activePage - 1
-        setNewsList(list.slice((page - 1) * 10, (page - 1) * 10 + 10))
-        dispatch(changeActivePage(activePage - 1))
-        startPage.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
 
     useEffect(() => {
         if (userPosition !== 0) {
@@ -63,21 +26,29 @@ export const NewsPage = () => {
         }
     }, [])
 
-    let scroll = 0
     useEffect(() => {
+        let scroll = 0
         const handleScroll = () => {
-            scroll = window.pageYOffset
+            scroll = window.scrollY
         }
-        window.addEventListener('scroll', handleScroll, { passive: true })
+        window.addEventListener('scroll', handleScroll)
 
         return () => {
+            dispatch(changeuserScrollPosition(scroll))
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
 
+    useEffect(() => {
+        if (mode === 'dynamic') {
+            activePage >= 2 ?
+                // setNewsList(list.slice((activePage - 2) * 10, (activePage - 1) * 10 + 10)) : setNewsList(list.slice(0, 10))
+                setNewsList(list.slice(0, (activePage - 1) * 10 + 10)) : setNewsList(list.slice(0, 10))
+        }
+    }, [])
+
     const data = newsList.map((news) => {
-        const seeMore = () => {
-            dispatch(changeuserScrollPosition(scroll))
+        const seeMore = (e) => {
             navigate(`/news/${news.id}`, { state: { news } })
         }
 
@@ -103,19 +74,31 @@ export const NewsPage = () => {
 
     return (
         <>
-            <br ref={startPage} />
+            <div>
+                <div style={mode === 'static' ? { background: '#e31235' } : null}
+                    className={styles.mode__btn}
+                    onClick={() => {
+                        dispatch(changePaginationMode('static'))
+                        dispatch(changeActivePage(1))
+                        setNewsList(list.slice(0, 10))
+                    }}>Статическая пагинация</div>
+                <div style={mode === 'dynamic' ? { background: '#e31235' } : null}
+                    className={styles.mode__btn}
+                    onClick={() => {
+                        dispatch(changePaginationMode('dynamic'))
+                        dispatch(changeActivePage(1))
+                        setNewsList(list.slice(0, 10))
+                    }}>Динамическая пагинация</div>
+            </div>
+
             {data}
             <hr className={styles.devider} />
 
-            <div className={styles.pagination}>
-                <div className={styles.page__button}
-                    onClick={arrowPreviousHandler}
-                ><ArrowIcon className={styles.rotate} /></div>
-                {pagination}
-                <div className={styles.page__button}
-                    onClick={arrowNextHandler}
-                ><ArrowIcon /></div>
-            </div>
+            {
+                mode === 'static' ?
+                    <Pagination pag={[pageCount, list, setNewsList]} />
+                    : <DynamicPagination pag={[pageCount, list, setNewsList]} />
+            }
         </>
     )
 } 

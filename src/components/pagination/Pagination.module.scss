@@ -1,0 +1,41 @@
+@mixin grid__mixin($ai, $jc, $ji) {
+    display: grid;
+    align-items: $ai;
+    @if ($jc != 'none') {
+        justify-content: $jc
+    }
+    @if ($ji != 'none') {
+        justify-items: $ji
+    };
+  }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.page__button {
+    @include grid__mixin(center, none, center);
+    width: 38px;
+    height: 28px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: var(--fw-bold);
+    background-color: var(--dark-green);
+    border: 2px solid var(--white);
+    margin-right: 3px;
+    cursor: pointer;
+    box-shadow:  var(--shadow);
+    user-select: none;
+        &:hover {
+            background-color: var(--orange);
+        }
+    }
+    
+.active__page__button {
+    background-color: var(--red) !important;
+}
+
+.rotate {
+    transform: rotate(-180deg);
+}

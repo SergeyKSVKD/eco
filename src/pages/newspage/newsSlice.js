@@ -5,6 +5,7 @@ const initialState = {
     news: [...list],
     activePage: 1,
     userScrollPosition: 0,
+    paginationMode: 'static'
 }
 
 const newsSlice = createSlice({
@@ -13,7 +14,7 @@ const newsSlice = createSlice({
     reducers: {
         changeActivePage: (state, action) => {
             return state = {
-                ...initialState,
+                ...state,
                 activePage: action.payload
             }
         },
@@ -23,8 +24,14 @@ const newsSlice = createSlice({
                 userScrollPosition: action.payload
             }
         },
+        changePaginationMode: (state, action) => {
+            return state = {
+                ...state,
+                paginationMode: action.payload
+            }
+        },
     }
 })
 
-export const { changeActivePage, changeuserScrollPosition } = newsSlice.actions
+export const { changeActivePage, changeuserScrollPosition, changePaginationMode } = newsSlice.actions
 export const newsReducer = newsSlice.reducer
