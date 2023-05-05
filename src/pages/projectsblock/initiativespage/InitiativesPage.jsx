@@ -11,7 +11,7 @@ import initiativesList from './initiativesList.json'
 export const InitiativesPage = () => {
     const ref = useRef()
 
-    const url = 'http://eco.local:5001/initiatives'
+    const url = 'http://ecoclub.local:5001/initiatives'
 
     const [activeForm, setActiveForm] = useState(false)
     const [modal, setModal] = useState({

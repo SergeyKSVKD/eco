@@ -4,6 +4,7 @@ import {
     format, startOfWeek, addDays, startOfMonth, endOfMonth,
     endOfWeek, isSameMonth, isSameDay, subMonths, addMonths
 } from 'date-fns';
+import { useResize } from '../../helpers/index'
 import { ru } from 'date-fns/locale'
 import cn from 'classnames'
 import { ReactComponent as ArrowIcon } from './assets/arrowSquare.svg'
@@ -14,6 +15,7 @@ export const Calendar = (props) => {
 
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [activeDate, setActiveDate] = useState(new Date())
+    let size = useResize()
 
     // const marker = () => {
     //     return <div className={styles.marker}></div>
@@ -32,42 +34,74 @@ export const Calendar = (props) => {
     //         })}
     //     </div>
     // }
+
     function renderEventsHandler() {
-        events.map(event => {
-            const currentDate = new Date()
-            if (document.querySelector(`[data-date="${event.date}"]`)) {
-                const date = new Date(document.querySelector(`[data-date="${event.date}"]`).dataset.dateeng)
-                let container = document.querySelector(`[data-date="${event.date}"]`).childNodes[1]
-                container.innerHTML = '';
-                let block = document.createElement("div")
-                block.classList.add(styles.event)
-                let content = document.createTextNode(`${event.name}`)
-                let marker = document.createElement("div")
-                marker.classList.add(styles.marker)
-                if (currentDate >= date) {
-                    marker.classList.add(styles.expired)
+        if (size.isScreenLg) {
+            events.map(event => {
+                const currentDate = new Date()
+                if (document.querySelector(`[data-date="${event.date}"]`)) {
+                    const date = new Date(document.querySelector(`[data-date="${event.date}"]`).dataset.dateeng)
+                    let container = document.querySelector(`[data-date="${event.date}"]`).childNodes[1]
+                    container.innerHTML = '';
+                    let block = document.createElement("div")
+                    block.classList.add(styles.event)
+                    let content = document.createTextNode(`${event.name}`)
+                    let marker = document.createElement("div")
+                    marker.classList.add(styles.marker)
+                    if (currentDate >= date) {
+                        marker.classList.add(styles.expired)
+                    }
+                    block.appendChild(marker)
+                    block.appendChild(content)
+                    container.appendChild(block)
+                    if (event.description) {
+                        let info = document.createElement("div")
+                        info.classList.add(styles.event__info)
+                        event.description.map((p) => {
+                            let text = document.createElement("p")
+                            text.innerText = p
+                            info.appendChild(text)
+                        })
+                        block.appendChild(info)
+                    }
                 }
-                block.appendChild(marker)
-                block.appendChild(content)
-                container.appendChild(block)
-                if (event.description) {
-                    let info = document.createElement("div")
-                    info.classList.add(styles.event__info)
-                    event.description.map((p) => {
-                        let text = document.createElement("p")
-                        text.innerText = p
-                        info.appendChild(text)
-                    })
-                    block.appendChild(info)
+            })
+        }
+        else {
+            events.map(event => {
+                const currentDate = new Date()
+                if (document.querySelector(`[data-date="${event.date}"]`)) {
+                    const date = new Date(document.querySelector(`[data-date="${event.date}"]`).dataset.dateeng)
+                    let container = document.querySelector(`[data-date="${event.date}"]`).childNodes[1]
+                    container.innerHTML = '';
+                    let block = document.createElement("div")
+                    block.classList.add(styles.event)
+                    let marker = document.createElement("div")
+                    marker.classList.add(styles.marker)
+                    if (currentDate >= date) {
+                        marker.classList.add(styles.expired)
+                    }
+                    block.appendChild(marker)
+                    container.appendChild(block)
+                    if (event.description) {
+                        let info = document.createElement("div")
+                        info.classList.add(styles.event__info)
+                        event.description.map((p) => {
+                            let text = document.createElement("p")
+                            text.innerText = p
+                            info.appendChild(text)
+                        })
+                        block.appendChild(info)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
 
     useEffect(() => {
         renderEventsHandler()
-    }, [activeDate])
+    }, [activeDate, size])
 
     const getCardHeader = () => {
         return <>

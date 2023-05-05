@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors({
     credentials: true,
     origin: [
-        'http://eco.local',
+        'http://ecoclub.samgtu.local',
     ]
 }));
 const port = 5001;

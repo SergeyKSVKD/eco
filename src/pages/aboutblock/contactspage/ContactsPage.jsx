@@ -9,7 +9,7 @@ import { Modal } from '../../../components/index'
 export const ContactsPage = () => {
     useEffect(() => social.current.scrollIntoView({ behavior: 'smooth', block: 'center' }), [])
 
-    const url = 'http://eco.samgtu.local:5001/register'
+    const url = 'http://ecoclub.samgtu.local:5001/register'
     const [modal, setModal] = useState({
         message: '',
         status: '',
