@@ -1,10 +1,10 @@
-const express = require("express");
-const nodemailer = require("nodemailer");
-const app = express();
-const dotenv = require('dotenv');
-dotenv.config({ path: './configs/.env' });
-const cors = require("cors");
-const { body, validationResult } = require('express-validator');
+const express = require("express")
+const nodemailer = require("nodemailer")
+const app = express()
+const dotenv = require('dotenv')
+dotenv.config({ path: './configs/.env' })
+const cors = require("cors")
+const { body, validationResult } = require('express-validator')
 
 
 app.use(express.json());
@@ -12,12 +12,14 @@ app.use(cors({
     credentials: true,
     origin: [
         'http://ecoclub.samgtu.local',
+        'http://localhost:3000',
+        'http://10.10.0.10:3000',
     ]
 }));
-const port = 5001;
+const port = 5001
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port} ${process.env.MAILER_HOST}`);
-});
+    console.log(`Server is running on port: ${port} ${process.env.MAILER_HOST}`)
+})
 
 let transporter = nodemailer.createTransport({
     host: process.env.MAILER_HOST,
@@ -33,7 +35,7 @@ transporter.verify((err, success) => {
     err
         ? console.log(err)
         : console.log(`=== Server is ready to take messages: ${success} ===`);
-});
+})
 
 
 app.post('/register',
@@ -93,8 +95,8 @@ app.post('/initiatives',
     body('initiativesState.name').isLength({max: 0}),
 
     function (req, res) {
-        const errors = validationResult(req);
-        console.log(errors);
+        const errors = validationResult(req)
+        console.log(errors)
         if (errors.isEmpty()) {
             let mailOptions = {
                 from: process.env.MAILER_USER,
