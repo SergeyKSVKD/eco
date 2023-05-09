@@ -17,9 +17,13 @@
 .hello__h {
     display: grid;
     justify-self: center;
-    font-size: var(--fs-sm);
+    font-size: var(--fs-md);
     font-weight: var(--fw-normal);
     margin-bottom: 10px;
+        a {
+            color: var(--red);
+            text-shadow: black 2px 1px;
+        }
 }
 
 .hello {

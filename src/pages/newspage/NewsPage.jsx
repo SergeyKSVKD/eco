@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeuserScrollPosition, changeActivePage, changePaginationMode } from './newsSlice'
+import { changeuserScrollPosition, changeActivePage, changePaginationMode, loadNews } from './newsSlice'
 import { Pagination, DynamicPagination } from '../../components/index'
 
 export const NewsPage = () => {
@@ -13,18 +13,27 @@ export const NewsPage = () => {
     const userPosition = useSelector(state => state.newsState.userScrollPosition)
     const list = useSelector(state => state.newsState.news)
     const mode = useSelector(state => state.newsState.paginationMode)
-    const [newsList = [], setNewsList] = useState(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
+    const [newsList, setNewsList] = useState([])
     const pageCount = Math.ceil(list.length / 10)
 
     useEffect(() => {
-        if (userPosition !== 0) {
-            window.scrollTo({
-                top: userPosition,
-                behavior: "smooth",
-            })
-            dispatch(changeuserScrollPosition(0))
+        if (list.length === 0) {
+            dispatch(loadNews())
         }
-    }, [])
+        setNewsList(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
+    }, [list])
+
+    useEffect(() => {
+        if (userPosition !== 0) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: userPosition,
+                    behavior: "smooth",
+                })
+                dispatch(changeuserScrollPosition(0))
+            })
+        }
+    }, [userPosition])
 
     useEffect(() => {
         let scroll = 0
@@ -57,7 +66,8 @@ export const NewsPage = () => {
             <div key={news.id} className={styles.news__page__container}>
                 <div className={styles.news__page__images}
                     onClick={seeMore}>
-                    <img src={require(`./assets/images/${news.imgsrc}`)} alt={news.imgalt} />
+                    {/* <img src={require(`./assets/images/${news.imgsrc}`)} alt={news.imgalt} /> */}
+                    <img src={process.env.PUBLIC_URL + `/images/news/${news.imgsrc}`} alt={news.imgalt} />
                 </div>
                 <div className={styles.news__page__text__container}>
                     {news.title ? <span className={styles.news__page__title}

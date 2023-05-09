@@ -5,11 +5,12 @@ import { ReactComponent as VKIcon } from './assets/vk.svg'
 import { ReactComponent as TelegramIcon } from './assets/telegram.svg'
 import { useState, useRef, useEffect } from 'react'
 import { Modal } from '../../../components/index'
+import { backend_mailer_url } from '../../../api'
 
 export const ContactsPage = () => {
     useEffect(() => social.current.scrollIntoView({ behavior: 'smooth', block: 'center' }), [])
 
-    const url = 'http://ecoclub.samgtu.local:5001/register'
+    const url = `${backend_mailer_url}/register`
     const [modal, setModal] = useState({
         message: '',
         status: '',

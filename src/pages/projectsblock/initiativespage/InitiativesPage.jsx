@@ -7,11 +7,12 @@ import { ReactComponent as CloseIcon } from './assets/close.svg'
 import { ReactComponent as EmailIcon } from './assets/email.svg'
 import { ReactComponent as PhoneIcon } from './assets/phone.svg'
 import initiativesList from './initiativesList.json'
+import {backend_mailer_url} from '../../../api'
 
 export const InitiativesPage = () => {
     const ref = useRef()
 
-    const url = 'http://ecoclub.local:5001/initiatives'
+    const url = `${backend_mailer_url}/initiatives`
 
     const [activeForm, setActiveForm] = useState(false)
     const [modal, setModal] = useState({

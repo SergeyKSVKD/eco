@@ -42,7 +42,8 @@ export const AssetPage = () => {
                     <div className={styles.profile2}></div>
                     {el.name ? <span className={styles.name}>{el.name}</span> : null}
                     {el.imgsrc ? <div className={styles.images}            >
-                        <img src={require(`./assets/images/${el.imgsrc}`)} alt={el.imgalt ? el.imgalt : 'eco-samgtu'} />
+                        {/* <img src={require(`./assets/images/${el.imgsrc}`)} alt={el.imgalt ? el.imgalt : 'eco-samgtu'} /> */}
+                        <img src={process.env.PUBLIC_URL + `images/asset/${el.imgsrc}`} alt={el.imgalt ? el.imgalt : 'eco-samgtu'} />
                     </div> : null}
                     <span className={styles.post__container}>
                         {el.post ? el.post.map((postItem) => <span key={postItem}>{postItem}</span>) : null}

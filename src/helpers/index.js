@@ -1,3 +1,3 @@
 export { useResize } from './useResize'
 export { useScrollPosition } from './useScrollPosition'
-import { useDebounce } from './useDebounce'
+export { useDebounce } from './useDebounce'

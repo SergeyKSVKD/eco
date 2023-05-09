@@ -16,6 +16,7 @@
 a.menu {
     text-decoration: none;
     color: var(--white);
+    text-shadow: black 2px 1px;
     display: grid;
     padding: 15px 0;
     align-items: center;
@@ -30,6 +31,7 @@ a.menu {
 a.submenu {
     text-decoration: none;
     color: var(--white);
+    text-shadow: black 2px 1px;
     display: grid;
     align-items: center;
     justify-items: center;

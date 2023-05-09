@@ -1,13 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit'
-import list from './newslist.json'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { backend_app_url } from '../../api'
+// import list from './newslist.json'
+
+
+export const loadNews = createAsyncThunk(
+    '@@news/get-all-news',
+    async () => {
+        const url = `${backend_app_url}/news`
+        const data = fetch(url).then((res) => res.json())
+        return data || []
+    }
+)
 
 const initialState = {
-    news: [...list],
+    news: [],
     activePage: 1,
     userScrollPosition: 0,
     paginationMode: 'static'
 }
-
 const newsSlice = createSlice({
     name: '@@news',
     initialState,
@@ -30,6 +40,11 @@ const newsSlice = createSlice({
                 paginationMode: action.payload
             }
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(loadNews.fulfilled, (state, action) => {
+            state.news = action.payload
+        })
     }
 })
 
