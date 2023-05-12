@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose')
 
-const schema = new Schema({
+const news = new Schema({
     _id: { type: Types.ObjectId },
     title: { type: String, required: true, unique: true, },
     promo: [{ type: String, required: true, unique: true, }],
@@ -11,4 +11,4 @@ const schema = new Schema({
     id: { type: String, unique: true, },
 })
 
-module.exports = model('News', schema)
+module.exports = model('News', news)

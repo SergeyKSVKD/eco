@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { ReactComponent as QuoteIcon } from './assets/quote.svg'
 import { motion } from 'framer-motion'
 
-export const AboutUsPage = () => {
+const AboutUsPage = () => {
 
     const motionTitleVariants = {
         hidden: {
@@ -137,3 +137,5 @@ export const AboutUsPage = () => {
         </>
     )
 } 
+
+export default AboutUsPage

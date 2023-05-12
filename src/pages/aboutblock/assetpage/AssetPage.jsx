@@ -1,10 +1,22 @@
 import styles from './AssetPage.module.scss'
 import { motion } from 'framer-motion'
+import { backend_app_url } from '../../../api'
 // import { ReactComponent as EmailIcon } from './assets/email.svg'
 // import { ReactComponent as PhoneIcon } from './assets/phone.svg'
-import stuf from './stuf.json'
+import { useState, useEffect } from 'react'
 
-export const AssetPage = () => {
+const AssetPage = () => {
+
+    const [stufs, setStufs] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const url = `${backend_app_url}/stufs`
+            const data = await fetch(url).then((res) => res.json())
+            setStufs(data)
+        }
+        fetchData()
+    }, [])
 
     const motionTitleVariants = {
         hidden: {
@@ -36,7 +48,7 @@ export const AssetPage = () => {
             </span>
             <hr className={styles.devider} />
             <div className={styles.wrapper}>
-                {stuf.map((el, index) => <div className={styles.card__container} key={index + 100}>
+                {stufs.map((el, index) => <div className={styles.card__container} key={index + 100}>
                     <div className={styles.header}></div>
                     <div className={styles.profile}></div>
                     <div className={styles.profile2}></div>
@@ -64,3 +76,5 @@ export const AssetPage = () => {
         </>
     )
 } 
+
+export default AssetPage

@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { ReactComponent as DoubleArrowIcon } from './assets/doublearrow.svg'
 import { Link } from "react-router-dom"
 
-export const OuractivitiesPage = () => {
+const OuractivitiesPage = () => {
 
     return <>
         <span className={styles.title__gray}>Наша деятельность</span>
@@ -155,3 +155,5 @@ export const OuractivitiesPage = () => {
         </div>
     </>
 }
+
+export default OuractivitiesPage

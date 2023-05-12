@@ -8,7 +8,7 @@ import { ReactComponent as EarthIcon } from './assets/earth.svg'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-export const HomePage = () => {
+const HomePage = () => {
     const initialState = {
         mission: false,
         principles: false,
@@ -454,3 +454,5 @@ export const HomePage = () => {
         </>
     )
 } 
+
+export default HomePage

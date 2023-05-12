@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Modal } from '../../../components/index'
 import { backend_mailer_url } from '../../../api'
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
     useEffect(() => social.current.scrollIntoView({ behavior: 'smooth', block: 'center' }), [])
 
     const url = `${backend_mailer_url}/register`
@@ -301,3 +301,5 @@ export const ContactsPage = () => {
         </>
     )
 } 
+
+export default ContactsPage

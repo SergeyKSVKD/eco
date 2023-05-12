@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { motion } from 'framer-motion'
 import { ReactComponent as EarthIcon } from './assets/earth.svg'
 
-export const EcopoliticPage = () => {
+const EcopoliticPage = () => {
 
     const motionTitleVariants = {
         hidden: {
@@ -57,3 +57,5 @@ export const EcopoliticPage = () => {
         </>
     )
 } 
+
+export default EcopoliticPage

@@ -2,7 +2,7 @@ import styles from './EcomanagePage.module.scss'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
 
-export const EcomanagePage = () => {
+const EcomanagePage = () => {
 
     const motionTitleVariants = {
         hidden: {
@@ -76,3 +76,5 @@ export const EcomanagePage = () => {
         </div>
     </>
 }
+
+ export default EcomanagePage

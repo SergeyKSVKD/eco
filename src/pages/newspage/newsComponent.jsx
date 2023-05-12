@@ -8,7 +8,7 @@ import { ReactComponent as ShareIcon } from './assets/share.svg'
 import { Modal } from '../../components/index'
 import { loadNews } from './newsSlice'
 
-export const News = () => {
+const News = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -112,3 +112,5 @@ export const News = () => {
     </>
     )
 }
+
+export default News

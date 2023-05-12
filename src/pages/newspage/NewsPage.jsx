@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeuserScrollPosition, changeActivePage, changePaginationMode, loadNews } from './newsSlice'
 import { Pagination, DynamicPagination } from '../../components/index'
 
-export const NewsPage = () => {
+const NewsPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const activePage = useSelector(state => state.newsState.activePage)
@@ -112,3 +112,5 @@ export const NewsPage = () => {
         </>
     )
 } 
+
+export default NewsPage

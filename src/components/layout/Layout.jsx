@@ -1,5 +1,6 @@
 import styles from './Layout.module.scss'
-import { Header, Footer } from '../index'
+import { Header, Footer, Preloader } from '../index'
+import { Suspense } from 'react'
 
 export const Layout = ({ children }) => {
 
@@ -9,7 +10,9 @@ export const Layout = ({ children }) => {
                 <Header />
             </div>
             <div className={styles.main}>
-                {children}
+                <Suspense fallback={<Preloader />}>
+                    {children}
+                </Suspense>
             </div>
             <div className={styles.footer} >
                 <Footer />

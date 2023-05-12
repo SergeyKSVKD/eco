@@ -2,7 +2,7 @@ import styles from './AiremissionsPage.module.scss'
 import cn from 'classnames'
 import { ReactComponent as EarthIcon } from './assets/earth.svg'
 
-export const AiremissionsPage = () => {
+const AiremissionsPage = () => {
     return (
         <>
             <p className={cn(styles.title__gray)}>Раздел «Выбросы в атмосферу» ожидает идей от студентов и сотрудников.</p>
@@ -16,3 +16,5 @@ export const AiremissionsPage = () => {
         </>
     )
 } 
+
+export default AiremissionsPage

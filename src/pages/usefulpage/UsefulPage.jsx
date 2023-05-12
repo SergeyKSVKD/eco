@@ -1,7 +1,7 @@
 import styles from './UsefulPage.module.scss'
 import { motion } from 'framer-motion'
 
-export const UsefulPage = () => {
+const UsefulPage = () => {
     const motionTitleVariants = {
         hidden: {
             opacity: 0,
@@ -62,3 +62,5 @@ export const UsefulPage = () => {
         </>
     )
 } 
+
+export default UsefulPage

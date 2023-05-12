@@ -14,6 +14,7 @@ app.use(cors({
         'http://ecoclub.samgtu.local',
         'http://localhost:3000',
         'http://10.10.0.10:3000',
+        'http://10.1.62.3:3000',
     ]
 }));
 const port = 5001

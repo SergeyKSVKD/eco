@@ -13,10 +13,14 @@ app.use(cors({
     origin: [
         'http://localhost:3000',
         'http://10.10.0.10:3000',
+        'http://10.1.62.3:3000',
     ]
 }))
 
 app.use('/news', require('./routes/news'))
+app.use('/stufs', require('./routes/stufs'))
+app.use('/initiatives', require('./routes/initiatives'))
+app.use('/events', require('./routes/events'))
 
 async function start() {
     try {

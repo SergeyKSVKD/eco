@@ -6,11 +6,21 @@ import { ReactComponent as PlusIcon } from './assets/plus.svg'
 import { ReactComponent as CloseIcon } from './assets/close.svg'
 import { ReactComponent as EmailIcon } from './assets/email.svg'
 import { ReactComponent as PhoneIcon } from './assets/phone.svg'
-import initiativesList from './initiativesList.json'
-import {backend_mailer_url} from '../../../api'
+// import initiativesList from './initiativesList.json'
+import {backend_app_url, backend_mailer_url} from '../../../api'
 
-export const InitiativesPage = () => {
+const InitiativesPage = () => {
     const ref = useRef()
+    const [initiatives, setInitiatives] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const url = `${backend_app_url}/initiatives`
+            const data = await fetch(url).then((res) => res.json())
+            setInitiatives(data)
+        }
+        fetchData()
+    }, [])
 
     const url = `${backend_mailer_url}/initiatives`
 
@@ -179,7 +189,7 @@ export const InitiativesPage = () => {
             ><PlusIcon /><span>Добавить инициативу </span></div>
             <br />
 
-            {initiativesList.map((el, index) =>
+            {initiatives.map((el, index) =>
                 <div className={styles.initiativesContainer} key={el.description}>
                     <div className={styles.initiative}>
                         <span className={styles.number}>{index + 1}</span>
@@ -336,3 +346,5 @@ export const InitiativesPage = () => {
         </>
     )
 } 
+
+export default InitiativesPage
