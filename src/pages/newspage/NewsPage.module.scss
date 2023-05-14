@@ -9,6 +9,10 @@
     };
   }
 
+.news__container {
+    position: relative;
+}
+
 .news__page__container {
     @include grid__mixin(start, center, none);
     grid-template-columns: 320px 320px;

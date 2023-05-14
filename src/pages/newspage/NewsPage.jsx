@@ -3,25 +3,31 @@ import { useState, useEffect } from 'react'
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeuserScrollPosition, changeActivePage, changePaginationMode, loadNews } from './newsSlice'
-import { Pagination, DynamicPagination } from '../../components/index'
+import { changeuserScrollPosition, loadNews, changeUploadData } from './newsSlice'
+import { DynamicPagination, FixedPagination } from '../../components/index'
 
 const NewsPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const activePage = useSelector(state => state.newsState.activePage)
     const userPosition = useSelector(state => state.newsState.userScrollPosition)
-    const list = useSelector(state => state.newsState.news)
-    const mode = useSelector(state => state.newsState.paginationMode)
+    const news = useSelector(state => state.newsState.news)
+    const displayedNews = useSelector(state => state.newsState.displayedNews)
     const [newsList, setNewsList] = useState([])
-    const pageCount = Math.ceil(list.length / 10)
+    const pageCount = Math.ceil(news.length / 10)
+    const upload = useSelector(state => state.newsState.uploadData)
 
     useEffect(() => {
-        if (list.length === 0) {
+        if (news.length === 0) {
             dispatch(loadNews())
         }
-        setNewsList(list.slice((activePage - 1) * 10, (activePage - 1) * 10 + 10))
-    }, [list])
+        if (news.length > 0 && displayedNews.length === 0) {
+            setTimeout(() => setNewsList(news.slice(0, (activePage - 1) * 10 + 10)), [100])
+        }
+        if (displayedNews.length > 0) {
+            setTimeout(() => setNewsList(displayedNews), [100])
+        }
+    }, [news, displayedNews])
 
     useEffect(() => {
         if (userPosition !== 0) {
@@ -30,34 +36,42 @@ const NewsPage = () => {
                     top: userPosition,
                     behavior: "smooth",
                 })
-                dispatch(changeuserScrollPosition(0))
-            })
+            }, [300])
+            setTimeout(() => dispatch(changeuserScrollPosition(0)), [1000])
         }
     }, [userPosition])
 
     useEffect(() => {
         let scroll = 0
-        const handleScroll = () => {
-            scroll = window.scrollY
+        const handleScroll = (e) => {
+            let scrollHeight = Math.max(
+                e.target.documentElement.scrollHeight,
+                e.target.documentElement.offsetHeight,
+                e.target.documentElement.clientHeight
+            )
+            let scrollTop = e.target.documentElement.scrollTop
+            let clientHeight = e.target.documentElement.clientHeight
+            console.log("scroll event", scrollHeight - (scrollTop + clientHeight));
+            scroll = scrollTop
+            if (scrollHeight - (scrollTop + clientHeight) < 20 && !upload && scrollHeight - (scrollTop + clientHeight) !== 0) {
+                window.removeEventListener('scroll', handleScroll)
+                dispatch(changeUploadData(true))
+                setTimeout(() => {
+                    window.addEventListener('scroll', handleScroll)
+                }, [1000]);
+            }
         }
         window.addEventListener('scroll', handleScroll)
 
         return () => {
-            dispatch(changeuserScrollPosition(scroll))
+            dispatch(changeUploadData(false))
             window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
-
-    useEffect(() => {
-        if (mode === 'dynamic') {
-            activePage >= 2 ?
-                // setNewsList(list.slice((activePage - 2) * 10, (activePage - 1) * 10 + 10)) : setNewsList(list.slice(0, 10))
-                setNewsList(list.slice(0, (activePage - 1) * 10 + 10)) : setNewsList(list.slice(0, 10))
         }
     }, [])
 
     const data = newsList.map((news) => {
         const seeMore = (e) => {
+            dispatch(changeuserScrollPosition(e.pageY - 252))
             navigate(`/news/${news.id}`, { state: { news } })
         }
 
@@ -84,33 +98,16 @@ const NewsPage = () => {
 
     return (
         <>
-            <div>
-                <div style={mode === 'static' ? { background: '#e31235' } : null}
-                    className={styles.mode__btn}
-                    onClick={() => {
-                        dispatch(changePaginationMode('static'))
-                        dispatch(changeActivePage(1))
-                        setNewsList(list.slice(0, 10))
-                    }}>Статическая пагинация</div>
-                <div style={mode === 'dynamic' ? { background: '#e31235' } : null}
-                    className={styles.mode__btn}
-                    onClick={() => {
-                        dispatch(changePaginationMode('dynamic'))
-                        dispatch(changeActivePage(1))
-                        setNewsList(list.slice(0, 10))
-                    }}>Динамическая пагинация</div>
+            <div className={styles.news__container}>
+                <FixedPagination pag={[pageCount, news]} />
+                {data}
             </div>
 
-            {data}
             <hr className={styles.devider} />
 
-            {
-                mode === 'static' ?
-                    <Pagination pag={[pageCount, list, setNewsList]} />
-                    : <DynamicPagination pag={[pageCount, list, setNewsList]} />
-            }
+            <DynamicPagination pag={[pageCount]} />
         </>
     )
-} 
+}
 
 export default NewsPage

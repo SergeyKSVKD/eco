@@ -12,7 +12,6 @@ const EventsPage = () => {
         async function fetchData() {
             const url = `${backend_app_url}/events`
             const data = await fetch(url).then((res) => res.json())
-            console.log(data);
             setEvents(data)
         }
         fetchData()

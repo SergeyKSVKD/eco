@@ -1,0 +1,50 @@
+@mixin grid__mixin($ai, $jc, $ji) {
+    display: grid;
+    align-items: $ai;
+    @if ($jc != 'none') {
+        justify-content: $jc
+    }
+    @if ($ji != 'none') {
+        justify-items: $ji
+    };
+  }
+
+.fixed__pagination {
+    position: sticky;
+    width: fit-content;
+    height: 0px;
+    left: 100%;
+    margin-right: 10px;
+    top: 250px;
+    z-index: 9;
+    display: grid;
+    gap: 1px;
+}
+
+.fixed__page__button {
+    @include grid__mixin(center, none, center);
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: var(--fw-bold);
+    background-color: var(--dark-green);
+    border: 2px solid var(--white);
+    cursor: pointer;
+    box-shadow:  var(--shadow);
+    user-select: none;
+        &:hover {
+            background-color: var(--orange);
+        }
+    }
+    
+.active__fixed__page__button {
+    background-color: var(--red) !important;
+}
+
+.fixed__rotate__up {
+    transform: rotate(-90deg);
+}
+.fixed__rotate__down {
+    transform: rotate(-270deg);
+}

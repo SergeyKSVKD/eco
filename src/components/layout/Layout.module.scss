@@ -3,7 +3,7 @@
     justify-content: center;
     align-content: center;
     grid-template-columns: auto minmax(320px, 1000px) auto;
-    grid-template-rows: max-content 1fr auto;
+    grid-template-rows: max-content minmax(300px, max-content) auto;
     gap: 10px;
     min-height: 100vh;
     grid-template-areas: 

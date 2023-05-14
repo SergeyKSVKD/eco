@@ -16,7 +16,8 @@ const initialState = {
     news: [],
     activePage: 1,
     userScrollPosition: 0,
-    paginationMode: 'static'
+    uploadData: false,
+    displayedNews: [],
 }
 const newsSlice = createSlice({
     name: '@@news',
@@ -34,10 +35,28 @@ const newsSlice = createSlice({
                 userScrollPosition: action.payload
             }
         },
-        changePaginationMode: (state, action) => {
+        changeUploadData: (state, action) => {
             return state = {
                 ...state,
-                paginationMode: action.payload
+                uploadData: action.payload
+            }
+        },
+        changeDisplayedNews: (state, action) => {
+            if (action.payload.dynamic) {
+                const news = action.payload.news
+                const displayedNews = news.slice(0, (action.payload.page - 1) * 10 + 10)
+                return state = {
+                    ...state,
+                    displayedNews: displayedNews
+                }
+            }
+            if (!action.payload.dynamic) {
+                const news = action.payload.news
+                const displayedNews = news.slice((action.payload.page - 1) * 10, (action.payload.page - 1) * 10 + 10)
+                return state = {
+                    ...state,
+                    displayedNews: displayedNews
+                }
             }
         },
     },
@@ -48,5 +67,5 @@ const newsSlice = createSlice({
     }
 })
 
-export const { changeActivePage, changeuserScrollPosition, changePaginationMode } = newsSlice.actions
+export const { changeActivePage, changeuserScrollPosition, changeUploadData, changeDisplayedNews } = newsSlice.actions
 export const newsReducer = newsSlice.reducer

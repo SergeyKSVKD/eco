@@ -1,41 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeActivePage } from '../../pages/newspage/newsSlice'
+import { changeActivePage, changeDisplayedNews, changeUploadData, changeScrollEvent } from '../../pages/newspage/newsSlice'
 
 export const DynamicPagination = (props) => {
     const dispatch = useDispatch()
-    const [pageCount, list, setNewsList] = props.pag
-    const [upload, setUpload] = useState(false)
+    const [pageCount] = props.pag
     const activePage = useSelector(state => state.newsState.activePage)
-
-    const handleScroll = (e) => {
-        let scrollHeight = Math.max(
-            e.target.documentElement.scrollHeight,
-            e.target.documentElement.offsetHeight,
-            e.target.documentElement.clientHeight
-        )
-        let scrollTop = e.target.documentElement.scrollTop
-        let clientHeight = e.target.documentElement.clientHeight
-        if (scrollHeight - (scrollTop + clientHeight) < 100) {
-            setUpload(true)
-        }
-        else setUpload(false)
-    }
-
-    useEffect(() => {
-        document.addEventListener('scroll', handleScroll)
-
-        return () => {
-            document.removeEventListener('scroll', handleScroll)
-        }
-        
-    }, [])
+    const news = useSelector(state => state.newsState.news)
+    const upload = useSelector(state => state.newsState.uploadData)
 
     useEffect(() => {
         let page = activePage + 1
         if (upload && page <= pageCount) {
-            const uploadedNews = list.slice((page - 1) * 10, (page - 1) * 10 + 10)
-            setNewsList((prevState) => [...prevState, ...uploadedNews])
+            dispatch(changeDisplayedNews({news, page, dynamic: true}))
+            dispatch(changeUploadData(false))
             dispatch(changeActivePage(page))
         }
     }, [upload])
